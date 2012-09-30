@@ -44,5 +44,3 @@ clean:
 install: all
 	$(LIBTOOL) --mode=install $(INSTALL) -c $(TARGET).la \
 		$(R)$(libdir)/$(TARGET).la
-	rm -f $(R)$(libdir)/$(TARGET)-$(RADIUSD_VERSION).la;
-	ln -s $(TARGET).la $(R)$(libdir)/$(TARGET)-$(RADIUSD_VERSION).la
