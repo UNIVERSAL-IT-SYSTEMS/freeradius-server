@@ -103,7 +103,7 @@ db_dir = ${raddbdir}
 #	make
 #	make install
 #
-libdir = @libdir@
+libdir = @libdir@/freeradius
 
 #  pidfile: Where to place the PID of the RADIUS server.
 #

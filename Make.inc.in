@@ -10,6 +10,7 @@ exec_prefix	= @exec_prefix@
 sysconfdir	= @sysconfdir@
 localstatedir	= @localstatedir@
 libdir		= @libdir@
+pkglibdir	= @libdir@/freeradius
 bindir		= @bindir@
 sbindir		= @sbindir@
 docdir		= @docdir@

@@ -12,7 +12,7 @@ all:
 	@$(MAKE) $(MFLAGS) WHAT_TO_MAKE=$@ common
 
 install:
-	$(INSTALL) -d -m 755 $(R)$(libdir)
+	$(INSTALL) -d -m 755 $(R)$(pkglibdir)
 	@$(MAKE) $(MFLAGS) WHAT_TO_MAKE=$@ common
 
 clean:
