@@ -580,7 +580,19 @@ AC_CHECK_LIB(pcap, pcap_open_live,
 	],
 	[ AC_MSG_WARN([pcap library not found, silently disabling the RADIUS sniffer.]) ])
 
-AC_LIB_READLINE
+AC_CHECK_LIB(readline, readline,
+	[ LIBREADLINE="-lreadline"
+	AC_DEFINE(HAVE_LIBREADLINE, 1,
+		[Define to 1 if you have a readline compatible library.])
+	AC_DEFINE(HAVE_READLINE_READLINE_H, 1,
+		[Define to 1 if you have the <readline/readline.h> header file.])
+	AC_DEFINE(HAVE_READLINE_HISTORY, 1,
+		[Define if your readline library has \`add_history'])
+	AC_DEFINE(HAVE_READLINE_HISTORY_H, 1,
+		[Define to 1 if you have the <readline/history.h> header file.])
+	],
+	[ LIBREADLINE="" ])
+AC_SUBST(LIBREADLINE)
 
 dnl #############################################################
 dnl #
