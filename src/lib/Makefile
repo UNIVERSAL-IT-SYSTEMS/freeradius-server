@@ -42,7 +42,7 @@ all: $(TARGET).la
 
 $(TARGET).la: $(LT_OBJS)
 	$(LIBTOOL) --mode=link $(CC) -release $(RADIUSD_VERSION) \
-	$(LDFLAGS) $(LINK_MODE) -o $@ -rpath $(libdir) $^
+	$(LDFLAGS) $(LINK_MODE) -o $@ -rpath $(libdir) $^ $(LIBS)
 
 $(LT_OBJS): $(INCLUDES)
 
