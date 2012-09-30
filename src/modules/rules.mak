@@ -122,7 +122,7 @@ build-module: $(TARGET).la $(RLM_UTILS)
 $(TARGET).la: $(RLM_SUBDIRS) $(LT_OBJS)
 	$(LIBTOOL) --mode=link $(CC) -release $(RADIUSD_VERSION) \
 	-module $(LINK_MODE) $(LDFLAGS) $(RLM_LDFLAGS) -o $@     \
-	-rpath $(libdir) $^ $(LIBRADIUS) $(RLM_LIBS) $(LIBS)
+	-rpath $(pkglibdir) $^ $(LIBRADIUS) $(RLM_LIBS) $(LIBS)
 
 #######################################################################
 #
@@ -163,11 +163,11 @@ reconfig:
 #  Do any module-specific installation.
 #
 #  If there isn't a TARGET defined, then don't do anything.
-#  Otherwise, install the libraries into $(libdir)
+#  Otherwise, install the libraries into $(pkglibdir)
 #
 install:
 	@[ "x$(RLM_INSTALL)" = "x" ] || $(MAKE) $(MFLAGS) $(RLM_INSTALL)
 	if [ "x$(TARGET)" != "x" ]; then \
 	    $(LIBTOOL) --mode=install $(INSTALL) -c \
-		$(TARGET).la $(R)$(libdir)/$(TARGET).la || exit $$?; \
+		$(TARGET).la $(R)$(pkglibdir)/$(TARGET).la || exit $$?; \
 	fi
