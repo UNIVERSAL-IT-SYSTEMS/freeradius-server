@@ -103,7 +103,7 @@ build-module: $(TARGET).la
 $(TARGET).la: $(LT_OBJS)
 	$(LIBTOOL) --mode=link $(CC) -release $(RADIUSD_VERSION) \
 	-module $(LINK_MODE) $(LDFLAGS) $(RLM_SQL_LDFLAGS) -o $@ \
-	-rpath $(libdir) $^ $(RLM_SQL_LIBS)
+	-rpath $(pkglibdir) $^ $(RLM_SQL_LIBS)
 
 #######################################################################
 #
@@ -141,10 +141,10 @@ reconfig:
 #  Do any module-specific installation.
 #
 #  If there isn't a TARGET defined, then don't do anything.
-#  Otherwise, install the libraries into $(libdir)
+#  Otherwise, install the libraries into $(pkglibdir)
 #
 install:
 	if [ "x$(TARGET)" != "x" ]; then \
 	    $(LIBTOOL) --mode=install $(INSTALL) -c \
-		$(TARGET).la $(R)$(libdir)/$(TARGET).la || exit $$?; \
+		$(TARGET).la $(R)$(pkglibdir)/$(TARGET).la || exit $$?; \
 	fi
