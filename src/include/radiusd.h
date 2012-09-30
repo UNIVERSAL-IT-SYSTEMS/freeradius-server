@@ -653,6 +653,7 @@ REQUEST *received_proxy_response(RADIUS_PACKET *packet);
 void event_new_fd(rad_listen_t *listener);
 
 /* evaluate.c */
+int radius_get_vp(REQUEST *request, const char *name, VALUE_PAIR **vp_p);
 int radius_evaluate_condition(REQUEST *request, int modreturn, int depth,
 			      const char **ptr, int evaluate_it, int *presult);
 int radius_update_attrlist(REQUEST *request, CONF_SECTION *cs,

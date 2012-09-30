@@ -49,6 +49,9 @@ RCSID("$Id$")
 #include <fcntl.h>
 #endif
 
+#ifdef WITH_UDPFROMTO
+#include <freeradius-devel/udpfromto.h>
+#endif
 
 /*
  *	We'll use this below.

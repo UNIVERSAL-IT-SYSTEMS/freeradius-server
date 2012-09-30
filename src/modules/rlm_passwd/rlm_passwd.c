@@ -247,8 +247,7 @@ static struct hashtable * build_hash_table (const char * file, int nfields,
 static struct mypasswd * get_next(char *name, struct hashtable *ht,
 				  struct mypasswd **last_found)
 {
-#define passwd ((struct mypasswd *) ht->buffer)
-	struct mypasswd * hashentry;
+	struct mypasswd * hashentry, * passwd;
 	char buffer[1024];
 	int len;
 	char *list, *nextlist;
@@ -267,6 +266,7 @@ static struct mypasswd * get_next(char *name, struct hashtable *ht,
 	}
 	/*	printf("try to find in file\n"); */
 	if (!ht->fp) return NULL;
+	passwd = (struct mypasswd *) ht->buffer;
 	while (fgets(buffer, 1024,ht->fp)) {
 		if(*buffer && *buffer!='\n' && (len = string_to_entry(buffer, ht->nfields, ht->delimiter, passwd, sizeof(ht->buffer)-1)) &&
 			(!ht->ignorenis || (*buffer !='-' && *buffer != '+') ) ){
@@ -288,7 +288,6 @@ static struct mypasswd * get_next(char *name, struct hashtable *ht,
 	fclose(ht->fp);
 	ht->fp = NULL;
 	return NULL;
-#undef passwd
 }
 
 static struct mypasswd * get_pw_nam(char * name, struct hashtable* ht,
